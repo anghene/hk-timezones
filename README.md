@@ -23,6 +23,21 @@ The idea behind the project was that it offers plenty of opportunity for problem
 
 So, please bear with me.
 
+### So what is the problem with timezoning ?
+
+![timezones map from timeanddate.com](https://c.tadst.com/gfx/600x337/timezone-map5.png?1)w
+
+Who doesn't want us to have an easy way of converting from one timezone to another ? In short: governments. But before you break out that circled "A" t-shirt and those Molotovs, how can we reason about timezones so that we keep it to a minimal and clean perception ? We deal with: 
+- non-standard timezone lengths (as [timeanddate.com](https://www.timeanddate.com/time/current-number-time-zones.html) would have us know: "If each time zone were 1 hour apart, there would be 24 in the world. But several time zones have only 30 and 45 minutes offsets, making the total number worldwide much higher."
+- Daylight Saving Time : meaning we have to keep candlesticks to a minimum burn and setback our clocks to gain as much day light at evenings with its countereffect of losing more light at the early hours of the morning. I don't know what's more important, having light to brush your teeth and make your coffee or having more light outside in the evening when you're not in a hurry to go to work? But ... that's just me.
+- Some places decide they don't need DST : which means sometimes, we must adjust for those of us who are living in this century and don't take part in the whole "save the candles" movement. Good news is, there are more and more of those that see the light.(pun intented).
+- Time Zone Borders Vary : for every 1-hour timezone difference, there's 15 degrees of globe curvature (as seen on the above image as well) - resulting in a 1 hour [mean sun time](https://www.timeanddate.com/time/local-mean-time.html) equivalence.
+- Governments : "Some geographically large (wide) countries, like India and China, use only 1 time zone, while it would have been natural to expect several, like in the US or Australia." - [timeanddate.com](https://www.timeanddate.com/time/current-number-time-zones.html). "Remember remember, the 5th of November" takes on a whole different meaning when you ask in which Timezone it happened.
+- UTC is Base : "Every place on Earth is measured in terms of its distance east or west of the prime meridian (0°longitude) in Greenwich, London, United Kingdom." - [timeanddate.com](https://www.timeanddate.com/time/current-number-time-zones.html). Kinda like how all arabic written languages start from right-to-left or left-to-right depending on the land they're written in and its position of east or west of Jerusalim - where it needs to flow to. Of course this isn't ENTIRELY true as Japanese people write top-to-bottom, and it;s said that the actual change to Left-to-Right script originated in Ancient Greek . However, there's an [International Date Line](https://en.wikipedia.org/wiki/International_Date_Line) just as there's an International Write Line.
+- sometimes more problems appear, but let's keep it light.
+
+To sum up, there are **Currently 38 Different Local Times in Use**. And as anything complex, it must be abstracted away in our algorithm so that we can solve our problem effectively. It's important to know that we depend on Standards, which are made by humans, and which change sometimes without warning, nor with backward compatibility. So our job will be to translate these timezones as static data types, and see how to make some operators between them. We could of course use a preexisting library that magics our tz conversions, but I think it would actually be beneficial to see how the nitty gritty works.
+
 ## Haskell
 
 I've only just started thinking about the types in Haskell. This is an important step since they will be inter-usable and in FP the first and foremost problem is identifying good and solid types. 
